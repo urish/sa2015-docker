@@ -1,0 +1,10 @@
+web:
+  image: wordpress
+  ports:
+   - "8080:80"
+  links:
+   - mysql
+mysql:
+  image: orchardup/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=mypass
