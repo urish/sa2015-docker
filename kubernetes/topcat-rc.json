@@ -1,0 +1,43 @@
+{
+	"kind": "ReplicationController",
+	"apiVersion": "v1",
+	"metadata": {
+		"name": "topcat",
+		"labels": {
+			"name": "topcat"
+		}
+	},
+	"spec": {
+		"replicas": 3,
+		"selector": {
+			"name": "topcat"
+		},
+		"template": {
+			"metadata": {
+				"labels": {
+					"name": "topcat"
+				}
+			},
+			"spec": {
+				"containers": [
+					{
+						"name": "topcat",
+						"image": "urish/topcat",
+						"env": [
+							{
+								"name": "TOPCAT_RETHINKDB",
+								"value": "rethinkdb-driver"
+							}
+						],
+						"ports": [
+							{
+								"containerPort": 8090,
+								"protocol": "TCP"
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}
